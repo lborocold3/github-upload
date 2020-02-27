@@ -1,0 +1,400 @@
+DECLARE
+BEGIN 
+FOR x IN (SELECT table_name FROM user_tables WHERE table_name LIKE 'STG_T_GLOS%ZZ') --ZZ is a safety 
+LOOP
+EXECUTE IMMEDIATE 'DROP TABLE '||x.table_name||' PURGE';
+END LOOP;
+END;
+/
+CREATE TABLE stg_t_glos_step1_analysis_date COMPRESS PCTFREE 0 PARALLEL 16 AS --Leng: Dim date
+SELECT    full_date analysis_date
+FROM      dim_t_date
+WHERE     full_date BETWEEN TO_DATE('01-Jul-2017','DD-Mon-YYYY') AND TO_DATE('30-Jun-2018','DD-Mon-YYYY') 
+AND       day_of_week = 6 --Leng: filter on Saturday
+/
+CREATE TABLE stg_t_glos_step2_base COMPRESS PCTFREE 0 PARALLEL 16 AS
+--base - DOP 16 PK to_date, SPK ice_customer_id
+SELECT    /*+ PARALLEL(64)*/ a.start_date, 
+          a.end_date,
+          b.analysis_date,
+          a.ice_customer_id,
+          a.account_reference,
+          a.base_id, 
+          a.premise_id,
+          a.key_type,
+          DECODE(a.key_type, 1, 'E', 2, 'G', 14, 'G', 'E') product_code, --Leng: anything else go electric
+          a.product_status,--Leng: Dim table checked see oneNote
+          1 domain
+FROM      ae_hds.hds_t_ice1_base a,
+          stg_t_glos_step1_analysis_date b
+WHERE     b.analysis_date BETWEEN a.from_date  AND NVL(a.to_date,  TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --Data as of the analysis_date --Leng: NVL same as isNull
+AND       b.analysis_date BETWEEN a.start_date AND NVL(a.end_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --On Supply Driven by Start and End Date
+AND       a.base_type = 'S' --Limit to Site Addresses  --Leng: DIM_V_BASE_TYPE; S	Service Location (Site)
+AND       a.key_type IN (1, 2, 14, 15) --Limit to G & E Products
+AND       NVL(a.product_status, 'CA') NOT IN ('CA', 'SU', 'LC', 'PG', 'PL', 'PR', 'PT') --Limited to live Statuses and remove fringe examples
+UNION ALL -- Leng: Duplicates? 
+SELECT    /*+ PARALLEL(64)*/ a.start_date, 
+          a.end_date,
+          b.analysis_date,
+          a.ice_customer_id,
+          a.account_reference,
+          a.base_id, 
+          a.premise_id,
+          a.key_type,
+          DECODE(a.key_type, 1, 'E', 2, 'G', 14, 'G', 'E') product_code,
+          a.product_status,
+          2 domain
+FROM      ae_hds.hds_t_ice2_base a,--Leng: Spoke to Kev about differeces between ice1 and ice2. Some historical issues 
+          stg_t_glos_step1_analysis_date b
+WHERE     b.analysis_date BETWEEN a.from_date  AND NVL(a.to_date,  TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --Data as of the analysis_date
+AND       b.analysis_date BETWEEN a.start_date AND NVL(a.end_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --On Supply Driven by Start and End Date --Leng: Supply Driven date
+AND       a.base_type = 'S' --Limit to Site Addresses 
+AND       a.key_type IN (1, 2, 14, 15) --Limit to G & E Products
+AND       NVL(a.product_status, 'CA') NOT IN ('CA', 'SU', 'LC', 'PG', 'PL', 'PR', 'PT') --Limited to live Statuses and remove fringe examples 
+/
+CREATE TABLE stg_t_glos_step3_dedupe COMPRESS PCTFREE 0 PARALLEL 16 AS
+SELECT    b.*, 
+          ROW_NUMBER() OVER (PARTITION BY b.account_reference, b.product_code, b.analysis_date ORDER BY b.start_date DESC, b.end_date DESC NULLS FIRST) rn
+FROM      stg_t_glos_step2_base b
+/
+CREATE TABLE stg_t_glos_step4_add_sector COMPRESS PCTFREE 0 PARALLEL 16 AS
+--cus_attrib_rep - DOP 16 PK none
+SELECT    c.*, 
+          TO_NUMBER(d.attribute_value_code) sector_id,
+          1 domain2
+FROM      stg_t_glos_step3_dedupe c,
+          ae_hds.hds_t_ice1_cus_attrib_rep d
+WHERE     c.rn = 1
+AND       c.analysis_date BETWEEN d.from_date AND NVL(d.to_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       c.analysis_date BETWEEN d.start_date AND NVL(d.end_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       d.attribute_code = 'SECTOR'
+AND       c.ice_customer_id = d.ice_customer_id
+UNION ALL
+SELECT    c.*, 
+          TO_NUMBER(d.attribute_value_code) sector_id,
+          2 domain2
+FROM      stg_t_glos_step3_dedupe c,
+          ae_hds.hds_t_ice2_cus_attrib_rep d
+WHERE     c.rn = 1
+AND       c.analysis_date BETWEEN d.from_date AND NVL(d.to_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       c.analysis_date BETWEEN d.start_date AND NVL(d.end_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       d.attribute_code = 'SECTOR'
+AND       c.ice_customer_id = d.ice_customer_id
+UNION ALL
+SELECT    c.*, 
+          -1 sector_id,
+          -1 domain2
+FROM      stg_t_glos_step3_dedupe c,
+          ae_hds.hds_t_ice1_cus_attrib_rep d,
+          ae_hds.hds_t_ice2_cus_attrib_rep e
+WHERE     c.rn = 1
+AND       c.analysis_date BETWEEN d.from_date (+) AND NVL(d.to_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       c.analysis_date BETWEEN d.start_date (+) AND NVL(d.end_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       d.attribute_code (+) = 'SECTOR'
+AND       c.ice_customer_id = d.ice_customer_id (+)
+AND       c.analysis_date BETWEEN e.from_date (+) AND NVL(e.to_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       c.analysis_date BETWEEN e.start_date (+) AND NVL(e.end_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       e.attribute_code (+) = 'SECTOR'
+AND       c.ice_customer_id = e.ice_customer_id (+)
+AND       d.ice_customer_id IS NULL
+AND       e.ice_customer_id IS NULL
+/
+CREATE TABLE stg_t_glos_step5_add_fire COMPRESS PCTFREE 0 PARALLEL 16 AS
+--account - DOP 16 PK to_date, SPK key_type
+SELECT    f.*, 
+          g.parent_account_reference financial_account_reference,
+          1 domain3
+FROM      stg_t_glos_step4_add_sector f,
+          ae_hds.hds_t_ice1_account g
+WHERE     f.analysis_date BETWEEN g.from_date AND NVL(g.to_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.analysis_date BETWEEN g.start_date AND NVL(g.end_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.account_reference = g.account_reference
+AND       f.key_type = g.key_type
+AND       f.ice_customer_id = g.ice_customer_id
+AND       g.parent_key_type = 12
+UNION ALL
+SELECT    f.*, 
+          g.parent_account_reference financial_account_reference,
+          2 domain3
+FROM      stg_t_glos_step4_add_sector f,
+          ae_hds.hds_t_ice2_account g
+WHERE     f.analysis_date BETWEEN g.from_date AND NVL(g.to_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.analysis_date BETWEEN g.start_date AND NVL(g.end_date, TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.account_reference = g.account_reference
+AND       f.key_type = g.key_type
+AND       f.ice_customer_id = g.ice_customer_id
+AND       g.parent_key_type = 12
+UNION ALL
+SELECT    f.*, 
+          CAST(NULL AS VARCHAR2(20)) financial_account_reference,
+          -1 domain3
+FROM      stg_t_glos_step4_add_sector f,
+          ae_hds.hds_t_ice1_account g,
+          ae_hds.hds_t_ice2_account h
+WHERE     f.analysis_date BETWEEN g.from_date (+) AND NVL(g.to_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.analysis_date BETWEEN g.start_date (+) AND NVL(g.end_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.account_reference = g.account_reference (+)
+AND       f.key_type = g.key_type (+)
+AND       f.ice_customer_id = g.ice_customer_id (+)
+AND       g.parent_key_type (+) = 12
+AND       f.analysis_date BETWEEN h.from_date (+) AND NVL(h.to_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.analysis_date BETWEEN h.start_date (+) AND NVL(h.end_date (+), TO_DATE('31-Dec-9999','DD-Mon-YYYY'))
+AND       f.account_reference = h.account_reference (+)
+AND       f.key_type = h.key_type (+)
+AND       f.ice_customer_id = h.ice_customer_id (+)
+AND       h.parent_key_type (+) = 12
+AND       g.account_reference IS NULL
+AND       h.account_reference IS NULL
+/ 
+CREATE TABLE stg_t_glos_step6_sample COMPRESS PCTFREE 0 PARALLEL 16 AS
+--take a sample of 2.5m Res and 2.5m SME
+WITH base AS
+(
+SELECT    a.*,
+          DECODE(a.sector_id, 3, 'SME', 'RES') sector_group,
+          ROW_NUMBER() OVER (PARTITION BY DECODE(a.sector_id, 3, 'SME', 'RES') ORDER BY DBMS_RANDOM.VALUE()) random_value
+FROM      stg_t_glos_step5_add_fire a
+WHERE     a.sector_id IN (-1, 3, 5, 6)
+)
+SELECT    *
+FROM      base
+WHERE     random_value <= 2500000
+/
+CREATE TABLE stg_t_glos_step7_clean_sample COMPRESS PCTFREE 0 PARALLEL 16 AS
+--tidy up the sample
+SELECT    a.analysis_date, 
+          a.ice_customer_id, 
+          a.financial_account_reference, 
+          a.account_reference product_account_reference, 
+          a.key_type, 
+          a.product_code, 
+          a.base_id, 
+          a.premise_id, 
+          a.sector_id, 
+          a.sector_group,
+          a.product_status,
+          a.start_date product_start_date,
+          a.end_date product_end_date
+FROM      stg_t_glos_step6_sample a
+/ 
+CREATE TABLE stg_t_glos_step8_base COMPRESS PCTFREE 0 PARALLEL 16 AS
+--append details 3 months on
+SELECT    a.*, 
+          b.end_reason end_reason_at_3_months,
+          b.product_status product_status_at_3_months,
+          b.end_date product_end_date_at_3_months
+FROM      stg_t_glos_step7_clean_sample a,
+          ae_hds.hds_t_ice1_base b
+WHERE     a.base_id = b.base_id
+AND       ADD_MONTHS(a.analysis_date, 3) BETWEEN b.from_date  AND NVL(b.to_date,  TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --Data as of 3 months after
+AND       b.base_type = 'S' --Limit to Site Addresses
+AND       b.key_type IN (1, 2, 14, 15) --Limit to G & E Products
+UNION ALL
+SELECT    a.*, 
+          b.end_reason end_reason_at_3_months,
+          b.product_status product_status_at_3_months,
+          b.end_date product_end_date_at_3_months
+FROM      stg_t_glos_step7_clean_sample a,
+          ae_hds.hds_t_ice2_base b
+WHERE     a.base_id = b.base_id
+AND       ADD_MONTHS(a.analysis_date, 3) BETWEEN b.from_date  AND NVL(b.to_date,  TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --Data as of 3 months after
+AND       b.base_type = 'S' --Limit to Site Addresses
+AND       b.key_type IN (1, 2, 14, 15) --Limit to G & E Products
+/
+CREATE TABLE aml_t_glos_base_v1 COMPRESS PCTFREE 0 PARALLEL 16 AS
+--Create target variables
+SELECT    a.*, 
+          CASE WHEN a.end_reason_at_3_months = 'T' AND a.product_end_date_at_3_months <= ADD_MONTHS(a.analysis_date, 3)
+               THEN 1 
+               ELSE 0 
+               END target_variable_cot,
+          CASE WHEN a.product_status_at_3_months = 'PL'
+               THEN 1 
+               WHEN a.end_reason_at_3_months = 'S' AND a.product_end_date_at_3_months <= ADD_MONTHS(a.analysis_date, 3)
+               THEN 1
+               ELSE 0 
+               END target_variable_cos
+FROM      stg_t_glos_step8_base a         
+/
+GRANT SELECT ON aml_t_glos_base_v1 TO N14326, K26819, C5498
+/
+SELECT    COUNT(*), 1
+FROM      stg_t_glos_step1_analysis_date
+UNION ALL
+SELECT    COUNT(*), 2
+FROM      stg_t_glos_step2_base
+UNION ALL
+SELECT    COUNT(*), 3
+FROM      stg_t_glos_step3_dedupe
+UNION ALL
+SELECT    COUNT(*), 4
+FROM      stg_t_glos_step4_add_sector
+UNION ALL
+SELECT    COUNT(*), 5
+FROM      stg_t_glos_step5_add_fire
+UNION ALL
+SELECT    COUNT(*), 6
+FROM      stg_t_glos_step6_sample
+UNION ALL
+SELECT    COUNT(*), 7
+FROM      stg_t_glos_step7_clean_sample
+UNION ALL
+SELECT    COUNT(*), 8
+FROM      stg_t_glos_step8_base
+/
+DROP TABLE stg_t_glos_step1_analysis_date PURGE
+/
+DROP TABLE stg_t_glos_step2_base PURGE
+/
+DROP TABLE stg_t_glos_step3_dedupe PURGE
+/
+DROP TABLE stg_t_glos_step4_add_sector PURGE
+/
+DROP TABLE stg_t_glos_step6_sample PURGE
+/
+DROP TABLE stg_t_glos_step9_base PURGE
+/
+CREATE TABLE stg_t_glos_step9_base COMPRESS PCTFREE 0 PARALLEL 16 AS
+--append details 6 months on
+WITH base AS
+(
+SELECT    a.base_id,
+          a.product_account_reference,
+          a.key_type,
+          a.ice_customer_id,
+          a.analysis_date, 
+          b.end_reason end_reason_at_6_months,
+          b.product_status product_status_at_6_months,
+          b.end_date product_end_date_at_6_months
+FROM      aml_t_glos_base_v1 a,
+          ae_hds.hds_t_ice1_base b
+WHERE     a.base_id = b.base_id
+AND       ADD_MONTHS(a.analysis_date, 6) BETWEEN b.from_date  AND NVL(b.to_date,  TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --Data as of 6 months after
+AND       b.base_type = 'S' --Limit to Site Addresses
+AND       b.key_type IN (1, 2, 14, 15) --Limit to G & E Products
+UNION ALL
+SELECT    a.base_id,
+          a.product_account_reference,
+          a.key_type,
+          a.ice_customer_id,
+          a.analysis_date, 
+          b.end_reason end_reason_at_6_months,
+          b.product_status product_status_at_6_months,
+          b.end_date product_end_date_at_6_months
+FROM      aml_t_glos_base_v1 a,
+          ae_hds.hds_t_ice2_base b
+WHERE     a.base_id = b.base_id
+AND       ADD_MONTHS(a.analysis_date, 6) BETWEEN b.from_date  AND NVL(b.to_date,  TO_DATE('31-Dec-9999','DD-Mon-YYYY')) --Data as of 6 months after
+AND       b.base_type = 'S' --Limit to Site Addresses
+AND       b.key_type IN (1, 2, 14, 15) --Limit to G & E Products
+)
+SELECT    CASE WHEN MAX(NVL(c.end_reason_at_6_months, '-')) = '-'
+               THEN NULL 
+               ELSE MAX(NVL(c.end_reason_at_6_months, '-'))
+               END end_reason_at_6_months,
+               
+          CASE WHEN MAX(NVL(c.product_status_at_6_months, '-')) = '-'
+               THEN NULL 
+               ELSE MAX(NVL(c.product_status_at_6_months, '-'))
+               END product_status_at_6_months,
+          
+          
+          CASE WHEN MAX(NVL(c.product_end_date_at_6_months, TO_DATE('01-Jan-1900','DD-Mon-YYYY'))) = TO_DATE('01-Jan-1900','DD-Mon-YYYY')
+               THEN NULL 
+               ELSE MAX(NVL(c.product_end_date_at_6_months, TO_DATE('01-Jan-1900','DD-Mon-YYYY')))
+               END product_end_date_at_6_months,
+          c.base_id,
+          c.product_account_reference,
+          c.key_type,
+          c.ice_customer_id,
+          c.analysis_date 
+FROM      base c 
+GROUP BY  c.base_id,
+          c.product_account_reference,
+          c.key_type,
+          c.ice_customer_id,
+          c.analysis_date
+/
+CREATE TABLE stg_t_glos_step10_tpi_base COMPRESS PCTFREE 0 PARALLEL 16 AS
+WITH base AS
+(
+SELECT    a.*, 
+          1 tpi_indicator2
+FROM      aml_t_glos_base_v1 a,
+          ae_hds.hds_t_ice1_acc_third_party b
+WHERE     a.ice_customer_id = b.ice_customer_id
+AND       a.analysis_date BETWEEN b.from_date  AND NVL(b.to_date , TO_DATE('31-Dec-9999', 'DD-Mon-YYYY'))
+AND       a.analysis_date BETWEEN b.start_date AND NVL(b.end_date, TO_DATE('31-Dec-9999', 'DD-Mon-YYYY'))
+AND       a.product_account_reference = b.account_reference
+AND       a.key_type = b.key_type        
+UNION ALL
+SELECT    a.*, 
+          1 tpi_indicator2
+FROM      aml_t_glos_base_v1 a,
+          ae_hds.hds_t_ice2_acc_third_party b
+WHERE     a.ice_customer_id = b.ice_customer_id
+AND       a.analysis_date BETWEEN b.from_date  AND NVL(b.to_date , TO_DATE('31-Dec-9999', 'DD-Mon-YYYY'))
+AND       a.analysis_date BETWEEN b.start_date AND NVL(b.end_date, TO_DATE('31-Dec-9999', 'DD-Mon-YYYY'))
+AND       a.product_account_reference = b.account_reference
+AND       a.key_type = b.key_type 
+)
+SELECT    MAX(c.tpi_indicator2) tpi_indicator2, 
+          c.base_id,
+          c.product_account_reference,
+          c.key_type,
+          c.ice_customer_id,
+          c.analysis_date
+FROM      base c
+GROUP BY  c.base_id,
+          c.product_account_reference,
+          c.key_type,
+          c.ice_customer_id,
+          c.analysis_date   
+/
+CREATE TABLE aml_t_glos_base_v2 COMPRESS PCTFREE 0 PARALLEL 16 AS
+SELECT    a.analysis_date,
+          a.ice_customer_id,
+          a.financial_account_reference,
+          a.product_account_reference,
+          a.key_type,
+          a.product_code,
+          a.base_id,
+          a.premise_id,
+          a.sector_id,
+          a.sector_group,
+          a.product_status,
+          a.product_start_date,
+          a.product_end_date,
+          a.end_reason_at_3_months,
+          a.product_status_at_3_months,
+          a.product_end_date_at_3_months,
+          a.target_variable_cot,
+          a.target_variable_cos,
+          CASE WHEN ADD_MONTHS(b.analysis_date, 6) > SYSDATE - 1
+               THEN NULL
+               WHEN b.product_status_at_6_months = 'PL'
+               THEN 1 
+               WHEN b.end_reason_at_6_months = 'S' AND b.product_end_date_at_6_months <= ADD_MONTHS(b.analysis_date, 6)
+               THEN 1
+               ELSE 0 
+               END target_variable_cos2, 
+          b.end_reason_at_6_months, 
+          b.product_status_at_6_months, 
+          b.product_end_date_at_6_months,
+          c.tpi_indicator2 tpi_indicator        --SELECT COUNT(*)  
+FROM      g18177.aml_t_glos_base_v1 a,
+          stg_t_glos_step9_base b,
+          stg_t_glos_step10_tpi_base c
+WHERE     a.base_id = b.base_id (+)
+AND       a.product_account_reference = b.product_account_reference (+)
+AND       a.key_type = b.key_type (+)
+AND       a.ice_customer_id = b.ice_customer_id (+)
+AND       a.analysis_date = b.analysis_date (+)
+AND       a.base_id = c.base_id (+)
+AND       a.product_account_reference = c.product_account_reference (+)
+AND       a.key_type = c.key_type (+)
+AND       a.ice_customer_id = c.ice_customer_id (+)
+AND       a.analysis_date = c.analysis_date (+)
+/
+GRANT SELECT ON aml_t_glos_base_v2 TO N14326, K26819, C5498
+/
