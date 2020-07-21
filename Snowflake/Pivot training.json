@@ -1,0 +1,714 @@
+{
+  "applicationDecision": "Decline",
+  "businessInfo": {
+    "address": {
+      "addressLine1": "18 SILVER STREET",
+      "addressLine2": "ENFIELD",
+      "addressLine3": "MIDDX",
+      "addressLine4": "",
+      "addressLine5": "",
+      "postCode": "EN1 3EG"
+    },
+    "businessName": "REEL PROPERTY SERVICES LIMITED",
+    "businessType": "Limited",
+    "companyReferenceNumber": "09053368",
+    "contactInfo": {
+      "email": [
+        {}
+      ],
+      "telephone": [
+        {},
+        {},
+        {}
+      ]
+    }
+  },
+  "businessLine": "EON SME LTD NO PRINCIPALS",
+  "characteristics": [
+    {
+      "name": "AMLA0001",
+      "value": "0"
+    },
+    {
+      "name": "AMLA0005",
+      "value": "0"
+    },
+    {
+      "name": "AMLA0013",
+      "value": "_"
+    },
+    {
+      "name": "AMLID008",
+      "value": "0"
+    },
+    {
+      "name": "AMLR0002",
+      "value": "_"
+    },
+    {
+      "name": "AMLR0009",
+      "value": "1"
+    },
+    {
+      "name": "CCJCNT03",
+      "value": "M"
+    },
+    {
+      "name": "CCJCNT06",
+      "value": "M"
+    },
+    {
+      "name": "CCJCNT12",
+      "value": "M"
+    },
+    {
+      "name": "CCJCNT24",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL03",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL06",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL12",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL24",
+      "value": "M"
+    },
+    {
+      "name": "CRACCNO",
+      "value": "4"
+    },
+    {
+      "name": "CRCOAGE",
+      "value": "66"
+    },
+    {
+      "name": "CRDIRA12",
+      "value": "C"
+    },
+    {
+      "name": "CRDIRNDQ",
+      "value": "M"
+    },
+    {
+      "name": "CRPADD03",
+      "value": "M"
+    },
+    {
+      "name": "CRPADD06",
+      "value": "M"
+    },
+    {
+      "name": "CRPADD12",
+      "value": "M"
+    },
+    {
+      "name": "CRPNAM03",
+      "value": "M"
+    },
+    {
+      "name": "CRPNAM06",
+      "value": "M"
+    },
+    {
+      "name": "CRPNAM12",
+      "value": "M"
+    },
+    {
+      "name": "CRSRCH01",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH03",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH06",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH12",
+      "value": "1"
+    },
+    {
+      "name": "CRSRCH24",
+      "value": "1"
+    },
+    {
+      "name": "GAZBKO03",
+      "value": "C"
+    },
+    {
+      "name": "GAZBKO06",
+      "value": "C"
+    },
+    {
+      "name": "GAZBKO12",
+      "value": "C"
+    },
+    {
+      "name": "GAZBKO36",
+      "value": "C"
+    },
+    {
+      "name": "GAZBKO72",
+      "value": "C"
+    },
+    {
+      "name": "INDFCT03",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT06",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT12",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT24",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT36",
+      "value": "M"
+    },
+    {
+      "name": "INDFVL03",
+      "value": "0.00"
+    },
+    {
+      "name": "INDFVL06",
+      "value": "M"
+    },
+    {
+      "name": "INDFVL12",
+      "value": "M"
+    },
+    {
+      "name": "INDFVL24",
+      "value": "0.00"
+    },
+    {
+      "name": "INDFVL36",
+      "value": "0.00"
+    },
+    {
+      "name": "INMGWS12",
+      "value": "M"
+    },
+    {
+      "name": "INMGWS36",
+      "value": "M"
+    },
+    {
+      "name": "INTODFBL",
+      "value": "M"
+    },
+    {
+      "name": "INTODFCU",
+      "value": "M"
+    },
+    {
+      "name": "INWORST",
+      "value": "M"
+    },
+    {
+      "name": "RGFFPCDE",
+      "value": "EN1 3EG"
+    },
+    {
+      "name": "SUADPCDE",
+      "value": "M"
+    }
+  ],
+  "companyOfficers": [
+    {
+      "address": {
+        "addressType": "Public Address",
+        "line1": "18 SILVER STREET",
+        "line3": "ENFIELD",
+        "line4": "MIDDX",
+        "line5": "UNITED KINGDOM",
+        "postcode": "EN1 3EG "
+      },
+      "appointmentDate": "2014-05-22",
+      "appointmentType": {
+        "code": "D",
+        "description": "Director"
+      },
+      "dateOfBirth": "1965-04-04",
+      "name": {
+        "firstName": "THOMAS PAUL",
+        "surname": "MOHAN",
+        "titles": "MR"
+      },
+      "nationality": "IRISH",
+      "occupation": "DIRECTOR",
+      "partialDateOfBirth": "1965-04",
+      "personId": "057969790005"
+    }
+  ],
+  "customerReference": "69252329",
+  "decision": {
+    "additionalDecisions": [
+      {
+        "DecisionCode": "RCP0050",
+        "DecisionDescription": "",
+        "DecisionReason": "RCP0050 Company Zero Analysed Credit Limit",
+        "DecisionState": "Refer",
+        "Priority": 1030,
+        "TransactionState": "pending",
+        "WorkItemFlag": true,
+        "WorkItemType": "Commercial Policy"
+      },
+      {
+        "DecisionCode": "RCP0050",
+        "DecisionDescription": "",
+        "DecisionReason": "RCP0050 Company Zero Analysed Credit Limit",
+        "DecisionState": "Refer",
+        "Priority": 1030,
+        "TransactionState": "pending",
+        "WorkItemFlag": true,
+        "WorkItemType": "Commercial Policy"
+      }
+    ],
+    "primaryDecisions": {
+      "decisionCode": "DCP0030",
+      "decisionDescription": "",
+      "decisionReason": "DCP0030 Company Other Gazette Movement",
+      "decisionState": "Decline",
+      "transactionState": "completed",
+      "workItemFlag": "false"
+    }
+  },
+  "detrimental": {
+    "ccj": {
+      "locationCcjCount": 4,
+      "locationCcjs": [
+        {
+          "amount": 5013,
+          "caseNumber": "E0BR5F7Y",
+          "court": "COUNTY COURT BUSINESS CENTRE",
+          "judgementDate": "2018-08-22",
+          "locationMatchedCompanyName": "GLOBAL KARTING LIMITED",
+          "locationMatchedCompanyNumber": "07079087",
+          "matchStatus": {
+            "code": "L",
+            "description": "Location"
+          },
+          "suppliedAddress": {
+            "line1": "18 SILVER STREET",
+            "line2": "ENFIELD",
+            "line3": "MIDDX",
+            "line4": "EN1 3EG"
+          },
+          "suppliedDefendantCompanyName": "GLOBAL KARTING LIMITED",
+          "type": {
+            "code": "J",
+            "description": "Judgement"
+          }
+        },
+        {
+          "amount": 902,
+          "caseNumber": "E7DT13EN",
+          "court": "COUNTY COURT BUSINESS CENTRE",
+          "judgementDate": "2018-11-29",
+          "locationMatchedCompanyName": "RUSS GILBERT LIMITED",
+          "locationMatchedCompanyNumber": "08881956",
+          "matchStatus": {
+            "code": "L",
+            "description": "Location"
+          },
+          "suppliedAddress": {
+            "line1": "18 SILVER STREET",
+            "line2": "ENFIELD",
+            "line3": "MIDDX",
+            "line4": "EN1 3EG"
+          },
+          "suppliedDefendantCompanyName": "RUSS GILBERT LIMITED",
+          "type": {
+            "code": "J",
+            "description": "Judgement"
+          }
+        },
+        {
+          "amount": 771,
+          "caseNumber": "A8XJ1345",
+          "court": "COUNTY COURT BUSINESS CENTRE",
+          "judgementDate": "2014-12-02",
+          "locationMatchedCompanyName": "DONTYR TAVERNS (WEALDSTONE) LIMITED",
+          "locationMatchedCompanyNumber": "08587861",
+          "matchStatus": {
+            "code": "L",
+            "description": "Location"
+          },
+          "suppliedAddress": {
+            "line1": "18 SILVER STREET",
+            "line2": "ENFIELD",
+            "line3": "MIDDLESEX",
+            "line4": "EN1 3EG"
+          },
+          "suppliedDefendantCompanyName": "DONTYR TAVERNS (WEALDSTONE) LTD",
+          "type": {
+            "code": "J",
+            "description": "Judgement"
+          }
+        },
+        {
+          "amount": 740,
+          "caseNumber": "A9EM930E",
+          "court": "COUNTY COURT BUSINESS CENTRE",
+          "judgementDate": "2014-11-04",
+          "locationMatchedCompanyName": "DONTYR TAVERNS (NORTH HARROW) LIMITED",
+          "locationMatchedCompanyNumber": "08587928",
+          "matchStatus": {
+            "code": "L",
+            "description": "Location"
+          },
+          "suppliedAddress": {
+            "line1": "18 SILVER STREET",
+            "line2": "ENFIELD",
+            "line3": "MIDDLESEX",
+            "line4": "EN1 3EG"
+          },
+          "suppliedDefendantCompanyName": "DONTYR TAVERNS (NORTH HARROW) LTD",
+          "type": {
+            "code": "J",
+            "description": "Judgement"
+          }
+        }
+      ]
+    },
+    "gazettes": [
+      {
+        "actionDate": "2017-05-10",
+        "code": "SOD",
+        "dated": "2017-05-10",
+        "description": "STRIKING OFF NOTICE DISCONTINUED",
+        "published": "Companies House",
+        "publishedDocument": "CH"
+      },
+      {
+        "actionDate": "2017-04-21",
+        "code": "STR",
+        "dated": "2017-05-02",
+        "description": "Striking off Notice",
+        "published": "Companies House",
+        "publishedDocument": "CH"
+      }
+    ]
+  },
+  "duplicates": [],
+  "financials": [
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2018-05-31"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "cashAndEquivalent": 20617,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "increaseInCash": 0,
+        "netCashflowFromOperatingActivities": 0,
+        "otherCurrentAssets": 5123,
+        "otherCurrentLiabilities": 35094,
+        "paidUpEquity": 100,
+        "profitAndLossAccount": -11053,
+        "shareholdersFunds": -10953,
+        "tangibleNetWorth": -10953,
+        "totalAssets": 25741,
+        "totalCurrentAssets": 25741,
+        "totalCurrentLiabilities": 36694,
+        "totalLiabilities": 36694,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": -11053,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 1600,
+        "tradeDebtors": 1,
+        "workingCapital": -10953
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2017-05-31"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "cashAndEquivalent": 7228,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "dividends": 8600,
+        "increaseInCash": 0,
+        "netCashflowFromOperatingActivities": 0,
+        "otherCurrentAssets": 2997,
+        "otherCurrentLiabilities": 10122,
+        "paidUpEquity": 100,
+        "profitAndLossAccount": 3,
+        "shareholdersFunds": 103,
+        "tangibleNetWorth": 103,
+        "totalAssets": 10225,
+        "totalCurrentAssets": 10225,
+        "totalCurrentLiabilities": 10122,
+        "totalLiabilities": 10122,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 3,
+        "totalShortTermBorrowings": 0,
+        "workingCapital": 103
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2016-05-31"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "cashAndEquivalent": 21328,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "otherCurrentAssets": 0,
+        "otherCurrentLiabilities": 0,
+        "paidUpEquity": 100,
+        "profitAndLossAccount": 7,
+        "shareholdersFunds": 107,
+        "tangibleNetWorth": 107,
+        "totalAssets": 25704,
+        "totalCurrentAssets": 25704,
+        "totalCurrentLiabilities": 25597,
+        "totalLiabilities": 25597,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 7,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 25597,
+        "tradeDebtors": 4376,
+        "workingCapital": 107
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2015-05-31"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "otherCurrentAssets": 0,
+        "otherCurrentLiabilities": 0,
+        "paidUpEquity": 100,
+        "profitAndLossAccount": 874,
+        "shareholdersFunds": 974,
+        "tangibleNetWorth": 974,
+        "totalAssets": 1283,
+        "totalCurrentAssets": 1283,
+        "totalCurrentLiabilities": 309,
+        "totalLiabilities": 309,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 874,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 309,
+        "tradeDebtors": 1283,
+        "workingCapital": 974
+      }
+    }
+  ],
+  "groupStructure": {
+    "issuedShares": [
+      {
+        "totalIssuedNumber": 100,
+        "totalIssuedType": "ORDINARY GBP1"
+      }
+    ],
+    "shareholders": [
+      {
+        "forename": "THOMAS",
+        "initial": "P",
+        "percentageOfOrdinary": 100,
+        "shareholderType": {
+          "code": "P",
+          "description": "Individual"
+        },
+        "shares": [
+          {
+            "joint": false,
+            "numberOfShares": 100,
+            "totalValueOfShares": 100,
+            "typeOfShare": "ORDINARY GBP1"
+          }
+        ],
+        "surname": "MOHAN"
+      }
+    ]
+  },
+  "identification": {
+    "accountReferenceDate": "3105",
+    "accountsFiledDate": "2019-02-01",
+    "accountsType": {
+      "code": 8,
+      "description": "Total Exemption Full"
+    },
+    "companyNumber": "09053368",
+    "companyType": {
+      "code": "2",
+      "description": "Private Limited"
+    },
+    "dissolved": false,
+    "equifaxIndustryClassification": {
+      "code": "68310",
+      "description": "Real estate activities"
+    },
+    "incorporationDate": "2014-05-22",
+    "latestAccountsFiledDate": "2018-05-31",
+    "latestAnalysedAccountDate": "2018-05-31",
+    "name": "REEL PROPERTY SERVICES LIMITED",
+    "nextAnnualReturnDue": "2020-06-19",
+    "registeredOffice": {
+      "line1": "18 SILVER STREET",
+      "line2": "ENFIELD",
+      "line3": "MIDDX",
+      "postcode": "EN1 3EG"
+    },
+    "returnMadeUpDate": "2019-05-22",
+    "standardIndustryClassifications": [
+      {
+        "code": "68310",
+        "description": "Real estate agencies"
+      }
+    ]
+  },
+  "mortgages": {
+    "currentMortgageStartDate": "2019-05-03",
+    "currentMortgagesCount": 2,
+    "satisfiedMortgageCount": 0,
+    "summaries": [
+      {
+        "charge": 1,
+        "details": [
+          {
+            "creationDate": "2019-05-03",
+            "description": "Form Description: REGISTRATION OF A CHARGE - COMMERCIAL ACCEPTANCES LIMITED,,,,,",
+            "formNumber": "MR01",
+            "partiallySatisfiedFlag": false,
+            "personsEntitled": "COMMERCIAL ACCEPTANCES LIMITED,,,,,",
+            "propertyCharged": "CONTAINS FIXED CHARGE.CONTAINS FLOATING CHARGE.FLOATING CHARGE COVERS ALL THE PROPERTY OR UNDERTAKING OF THE COMPANY.CONTAINS NEGATIVE PLEDGE.",
+            "registeredDate": "2019-05-07"
+          }
+        ],
+        "satisfied": false
+      },
+      {
+        "charge": 2,
+        "details": [
+          {
+            "creationDate": "2019-05-03",
+            "description": "Form Description: REGISTRATION OF A CHARGE - COMMERCIAL ACCEPTANCES LIMITED,,,,,",
+            "formNumber": "MR01",
+            "partiallySatisfiedFlag": false,
+            "personsEntitled": "COMMERCIAL ACCEPTANCES LIMITED,,,,,",
+            "propertyCharged": "THE FREEHOLD PROPERTY SITUATE AND KNOWN AS 379 PINNER ROAD HARROW HA1 4HN REGISTERED AT HM LAND REGISTRY WITH TITLE ABSOLUTE UNDER TITLE NUMBER MX263054CONTAINS FLOATING CHARGE.CONTAINS NEGATIVE PLEDGE.",
+            "registeredDate": "2019-05-07"
+          }
+        ],
+        "satisfied": false
+      }
+    ]
+  },
+  "notes": [],
+  "organisation": "eon",
+  "principal": [],
+  "productType": "Credit",
+  "scoresAndLimits": {
+    "creditLimit": 0,
+    "postcodeRN": 131,
+    "protectCodes": [
+      {
+        "code": "C8",
+        "description": "External interest in subject predates 5 years."
+      },
+      {
+        "code": "V1",
+        "description": "Caution.The accounts have not been audited"
+      },
+      {
+        "code": "H4",
+        "description": "Current/previous Director(s) and/or current/previous Secretary have been recorded as being directors of a company/or companies which have been struck off the Register of Companies as a result of either a subject company voluntary application or due to non compliance."
+      },
+      {
+        "code": "H5",
+        "description": "Current/Previous Director(s) and/or current/previous Secretary have been recorded as being directors of a company or companies which have been dissolved."
+      }
+    ],
+    "protectScore": 20,
+    "score": 5,
+    "scoreGrade": "I",
+    "scoreGradeSixMonthsAgo": "F+",
+    "scoreGradeThreeMonthsAgo": "I",
+    "scoreName": {
+      "code": "S",
+      "description": "ScoreCheck"
+    },
+    "scoreSixMonthsAgo": 17,
+    "scoreThreeMonthsAgo": 5
+  },
+  "summary": {
+    "applicationState": "completed",
+    "created": "2019-10-22 11:49:18.874",
+    "decisionTime": "2019-10-22 11:49:19.904"
+  },
+  "termsRequestedMonths": 0,
+  "termsRequestedYears": 0,
+  "tieredOwnership": [
+    {
+      "shareholders": [
+        {
+          "forename": "THOMAS",
+          "initial": "P",
+          "percentageOfOrdinary": 100,
+          "shareholderType": {
+            "code": "P",
+            "description": "Individual"
+          },
+          "shares": [
+            {
+              "joint": false,
+              "numberOfShares": 100,
+              "totalValueOfShares": 100,
+              "typeOfShare": "ORDINARY GBP1"
+            }
+          ],
+          "surname": "MOHAN"
+        }
+      ],
+      "tierNumber": 0
+    }
+  ],
+  "transactionId": "9d152f7c-baed-4cb0-b11f-e64ee966dd85"
+}

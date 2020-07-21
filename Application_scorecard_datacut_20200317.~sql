@@ -18,7 +18,7 @@ select      distinct rq.entity_id,
             trunc(rq.request_date)      request_date,
             rq.request_date             request_date_time,
             rq.user_id                  request_user_id,
-            nvl(ccrq.consent_flag,ccrqs.consent_flag) as consent_flag,
+            nvl(ccrq.consent_flag,ccrqs.consent_flag) as ,
             rs.response_id,
             trunc(rs.response_date)     response_date,
             rs.response_date            response_date_time,
@@ -55,7 +55,7 @@ from
             
             left outer join AE_HDS.HDS_T_ICE1_RES_CC_REQUEST     ccrq 
             on ccrq.request_id = rq.request_id
-            and nvl(ccrq.to_date,trunc(sysdate)+1) > trunc(sysdate)
+            and nvl(ccrq.to_date,trunc(sysdate)+1) > trunc(sysdate)--Leng:???
             
             left outer join  AE_HDS.HDS_T_ICE1_SME_CC_REQUEST     ccrqs 
             on ccrqs.request_id = rq.request_id
@@ -145,7 +145,7 @@ from
                      
            
    where    rq.request_type_id in (1,2)
-      
+    
     and rq.request_date >= to_date('01032017','ddmmyyyy')   
 
    and      nvl(rq.to_date,trunc(sysdate)+1)   > trunc(sysdate);

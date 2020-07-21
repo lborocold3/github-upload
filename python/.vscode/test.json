@@ -1,0 +1,657 @@
+{
+  "applicationDecision": "Accept",
+  "businessInfo": {
+    "address": {
+      "addressLine1": "83 & 83A",
+      "addressLine2": "RIDGEWAY CHELLASTON",
+      "addressLine3": "DERBY",
+      "postCode": "DE73 6UJ"
+    },
+    "businessName": "RIDGEWAY FOOD AND WINE LTD",
+    "businessType": "Limited",
+    "companyReferenceNumber": "08380348",
+    "contactInfo": {
+      "email": [
+        {}
+      ],
+      "telephone": [
+        {},
+        {},
+        {}
+      ]
+    }
+  },
+  "businessLine": "EON SME LTD NO PRIN ON SUPPLY",
+  "characteristics": [
+    {
+      "name": "AMLA0001",
+      "value": "0"
+    },
+    {
+      "name": "AMLA0005",
+      "value": "0"
+    },
+    {
+      "name": "AMLA0013",
+      "value": "_"
+    },
+    {
+      "name": "AMLID008",
+      "value": "0"
+    },
+    {
+      "name": "AMLR0002",
+      "value": "_"
+    },
+    {
+      "name": "AMLR0009",
+      "value": "0"
+    },
+    {
+      "name": "CCJCNT03",
+      "value": "M"
+    },
+    {
+      "name": "CCJCNT06",
+      "value": "M"
+    },
+    {
+      "name": "CCJCNT12",
+      "value": "M"
+    },
+    {
+      "name": "CCJCNT24",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL03",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL06",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL12",
+      "value": "M"
+    },
+    {
+      "name": "CCJVAL24",
+      "value": "M"
+    },
+    {
+      "name": "CRACCNO",
+      "value": "5"
+    },
+    {
+      "name": "CRCOAGE",
+      "value": "82"
+    },
+    {
+      "name": "CRDIRA12",
+      "value": "C"
+    },
+    {
+      "name": "CRDIRNDQ",
+      "value": "M"
+    },
+    {
+      "name": "CRPADD03",
+      "value": "M"
+    },
+    {
+      "name": "CRPADD06",
+      "value": "M"
+    },
+    {
+      "name": "CRPADD12",
+      "value": "M"
+    },
+    {
+      "name": "CRPNAM03",
+      "value": "M"
+    },
+    {
+      "name": "CRPNAM06",
+      "value": "M"
+    },
+    {
+      "name": "CRPNAM12",
+      "value": "M"
+    },
+    {
+      "name": "CRSRCH01",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH03",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH06",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH12",
+      "value": "C"
+    },
+    {
+      "name": "CRSRCH24",
+      "value": "C"
+    },
+    {
+      "name": "GAZBKO03",
+      "value": "M"
+    },
+    {
+      "name": "GAZBKO06",
+      "value": "M"
+    },
+    {
+      "name": "GAZBKO12",
+      "value": "M"
+    },
+    {
+      "name": "GAZBKO36",
+      "value": "M"
+    },
+    {
+      "name": "GAZBKO72",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT03",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT06",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT12",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT24",
+      "value": "M"
+    },
+    {
+      "name": "INDFCT36",
+      "value": "M"
+    },
+    {
+      "name": "INDFVL03",
+      "value": "0.00"
+    },
+    {
+      "name": "INDFVL06",
+      "value": "M"
+    },
+    {
+      "name": "INDFVL12",
+      "value": "M"
+    },
+    {
+      "name": "INDFVL24",
+      "value": "0.00"
+    },
+    {
+      "name": "INDFVL36",
+      "value": "0.00"
+    },
+    {
+      "name": "INMGWS12",
+      "value": "C"
+    },
+    {
+      "name": "INMGWS36",
+      "value": "C"
+    },
+    {
+      "name": "INTODFBL",
+      "value": "0"
+    },
+    {
+      "name": "INTODFCU",
+      "value": "C"
+    },
+    {
+      "name": "INWORST",
+      "value": "0"
+    },
+    {
+      "name": "RGFFPCDE",
+      "value": "DE73 6UJ"
+    },
+    {
+      "name": "SUADPCDE",
+      "value": "M"
+    }
+  ],
+  "companyOfficers": [
+    {
+      "address": {
+        "addressType": "Public Address",
+        "line1": "83 & 83A",
+        "line2": "RIDGEWAY CHELLASTON",
+        "line3": "DERBY",
+        "postcode": "DE73 6UJ"
+      },
+      "appointmentDate": "2015-12-01",
+      "appointmentType": {
+        "code": "D",
+        "description": "Director"
+      },
+      "name": {
+        "firstName": "SATINDER KAUR",
+        "surname": "TAKHAR"
+      },
+      "nationality": "BRITISH",
+      "occupation": "DIRECTOR",
+      "partialDateOfBirth": "1959-12",
+      "personId": "151145460003"
+    },
+    {
+      "address": {
+        "addressType": "Public Address",
+        "line1": "83 RIDGEWAY",
+        "line2": "CHELLASTON",
+        "line3": "DERBY",
+        "line5": "ENGLAND",
+        "postcode": "DE73 6UJ"
+      },
+      "appointmentDate": "2013-01-29",
+      "appointmentType": {
+        "code": "PD",
+        "description": "Previous Director"
+      },
+      "name": {
+        "firstName": "SURINDERPAL SINGH",
+        "surname": "TAKHAR"
+      },
+      "nationality": "BRITISH",
+      "occupation": "DIRECTOR",
+      "partialDateOfBirth": "1958-11",
+      "personId": "137496250005",
+      "resignationDate": "2019-01-31"
+    }
+  ],
+  "customerReference": "016349708900",
+  "decision": {
+    "primaryDecisions": {
+      "decisionCode": "AOT9050",
+      "decisionDescription": "",
+      "decisionReason": "AOT9050 Commercial - No Rules Triggered",
+      "decisionState": "Accept",
+      "transactionState": "completed",
+      "workItemFlag": "false"
+    }
+  },
+  "duplicates": [],
+  "financials": [
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2018-04-30"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "otherCurrentAssets": 71156,
+        "otherCurrentLiabilities": 0,
+        "profitAndLossAccount": 20917,
+        "shareholdersFunds": 20917,
+        "tangibleFixedAssets": 48275,
+        "tangibleNetWorth": 20917,
+        "totalAssets": 119431,
+        "totalCurrentAssets": 71156,
+        "totalCurrentLiabilities": 98514,
+        "totalFixedAssets": 48275,
+        "totalLiabilities": 98514,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 20917,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 98514,
+        "workingCapital": -27358
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2017-04-30"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "otherCurrentAssets": 68255,
+        "otherCurrentLiabilities": 0,
+        "profitAndLossAccount": 18797,
+        "shareholdersFunds": 18797,
+        "tangibleFixedAssets": 49765,
+        "tangibleNetWorth": 18797,
+        "totalAssets": 118020,
+        "totalCurrentAssets": 68255,
+        "totalCurrentLiabilities": 99223,
+        "totalFixedAssets": 49765,
+        "totalLiabilities": 99223,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 18797,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 99223,
+        "workingCapital": -30968
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2016-04-30"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "otherCurrentAssets": 77508,
+        "otherCurrentLiabilities": 0,
+        "profitAndLossAccount": 26339,
+        "shareholdersFunds": 26339,
+        "tangibleFixedAssets": 52073,
+        "tangibleNetWorth": 26339,
+        "totalAssets": 129581,
+        "totalCurrentAssets": 77508,
+        "totalCurrentLiabilities": 103242,
+        "totalFixedAssets": 52073,
+        "totalLiabilities": 103242,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 26339,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 103242,
+        "workingCapital": -25734
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 15,
+        "yearEndDate": "2015-04-30"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "cashAndEquivalent": 3381,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "intangibleAssets": 40000,
+        "otherCurrentAssets": 0,
+        "otherCurrentLiabilities": 0,
+        "paidUpEquity": 100,
+        "profitAndLossAccount": 25010,
+        "shareholdersFunds": 25110,
+        "stock": 66524,
+        "tangibleFixedAssets": 14939,
+        "tangibleNetWorth": -14890,
+        "totalAssets": 124844,
+        "totalCurrentAssets": 69905,
+        "totalCurrentLiabilities": 99734,
+        "totalFixedAssets": 54939,
+        "totalLiabilities": 99734,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 25010,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 99734,
+        "workingCapital": -29829
+      }
+    },
+    {
+      "accountingAndPeriodData": {
+        "accountQualified": false,
+        "consolidated": false,
+        "currency": "GBP",
+        "numberOfMonths": 12,
+        "yearEndDate": "2014-01-31"
+      },
+      "financialData": {
+        "bankOverdraft": 0,
+        "cashAndEquivalent": 6860,
+        "currentLiabilitiesBankLoansOrOverdraft": 0,
+        "intangibleAssets": 40000,
+        "otherCurrentAssets": 0,
+        "otherCurrentLiabilities": 0,
+        "paidUpEquity": 100,
+        "profitAndLossAccount": 12806,
+        "shareholdersFunds": 12906,
+        "stock": 61043,
+        "tangibleFixedAssets": 17223,
+        "tangibleNetWorth": -27094,
+        "totalAssets": 125126,
+        "totalCurrentAssets": 67903,
+        "totalCurrentLiabilities": 112220,
+        "totalFixedAssets": 57223,
+        "totalLiabilities": 112220,
+        "totalLongTermBorrowings": 0,
+        "totalLongTermLiabilities": 0,
+        "totalOtherLongTermLiabilities": 0,
+        "totalReserves": 12806,
+        "totalShortTermBorrowings": 0,
+        "tradeCreditors": 112220,
+        "workingCapital": -44317
+      }
+    }
+  ],
+  "groupStructure": {
+    "issuedShares": [
+      {
+        "totalIssuedNumber": 100,
+        "totalIssuedType": "ORD"
+      }
+    ],
+    "shareholders": [
+      {
+        "forename": "SATINDERKAUR",
+        "percentageOfOrdinary": 100,
+        "shareholderType": {
+          "code": "P",
+          "description": "Individual"
+        },
+        "shares": [
+          {
+            "joint": false,
+            "numberOfShares": 100,
+            "totalValueOfShares": 100,
+            "typeOfShare": "ORD"
+          }
+        ],
+        "surname": "TAKHAR"
+      }
+    ]
+  },
+  "identification": {
+    "accountReferenceDate": "3004",
+    "accountsFiledDate": "2019-01-24",
+    "accountsType": {
+      "code": 16,
+      "description": "Micro Entity"
+    },
+    "companyNumber": "08380348",
+    "companyType": {
+      "code": "2",
+      "description": "Private Limited"
+    },
+    "dissolved": false,
+    "equifaxIndustryClassification": {
+      "code": "47110",
+      "description": "Retail trade, except of motor vehicles and motorcycles"
+    },
+    "incorporationDate": "2013-01-29",
+    "latestAccountsFiledDate": "2018-04-30",
+    "latestAnalysedAccountDate": "2018-04-30",
+    "name": "RIDGEWAY FOOD AND WINE LTD",
+    "nextAnnualReturnDue": "2020-02-26",
+    "registeredOffice": {
+      "line1": "83 & 83A",
+      "line2": "RIDGEWAY CHELLASTON",
+      "line3": "DERBY",
+      "postcode": "DE73 6UJ"
+    },
+    "returnMadeUpDate": "2019-01-29",
+    "standardIndustryClassifications": [
+      {
+        "code": "47110",
+        "description": "Retail sale in non-specialised stores with food, beverages or tobacco predominating"
+      }
+    ],
+    "tradingAddresses": [
+      {
+        "addressIndicator": {
+          "code": "S",
+          "description": "Single site"
+        },
+        "line1": "83 Ridgeway",
+        "line3": "Chellaston",
+        "line4": "Derby",
+        "line5": "Derbyshire",
+        "phone": "01332700139",
+        "postcode": "DE73 6UJ",
+        "premiseType": {
+          "code": "SH",
+          "description": "Shops / Retail Outlets"
+        }
+      }
+    ]
+  },
+  "insight": {
+    "financialAgreements": [
+      {
+        "accountType": "05",
+        "amount": 0,
+        "contributorType": {
+          "code": "CR",
+          "description": "Commercial Reporting"
+        },
+        "creditLimit": 3000,
+        "currentBalance": 571,
+        "lastUpdate": "2019-09-01",
+        "latestStatus": {
+          "code": "0",
+          "description": "Up to date with payments"
+        },
+        "profile": "000000000000000000000000000000000000000000000000",
+        "startDate": "2013-02-19",
+        "terms": 0,
+        "worstStatus": {
+          "code": "0",
+          "description": "Up to date with payments"
+        }
+      },
+      {
+        "accountType": "17",
+        "amount": 0,
+        "contributorType": {
+          "code": "CR",
+          "description": "Commercial Reporting"
+        },
+        "creditLimit": 7000,
+        "currentBalance": 0,
+        "lastUpdate": "2019-09-01",
+        "latestStatus": {
+          "code": "0",
+          "description": "Up to date with payments"
+        },
+        "profile": "000000000000000000000000000000000000000000000000",
+        "startDate": "2013-02-19",
+        "terms": 0,
+        "worstStatus": {
+          "code": "0",
+          "description": "Up to date with payments"
+        }
+      }
+    ],
+    "latestAgreementStartDate": "2013-02-19",
+    "totalAgreements": 2,
+    "totalCurrentAgreements": 2,
+    "totalCurrentOutstandingBalance": 571,
+    "totalDefaultAgreements": 0,
+    "totalDefaultBalance": 0,
+    "totalSatisfiedAgreements": 0
+  },
+  "notes": [],
+  "organisation": "eon",
+  "principal": [],
+  "productType": "Credit",
+  "scoresAndLimits": {
+    "creditLimit": 2000,
+    "postcodeRN": 116,
+    "protectCodes": [
+      {
+        "code": "C8",
+        "description": "External interest in subject predates 5 years."
+      },
+      {
+        "code": "V1",
+        "description": "Caution.The accounts have not been audited"
+      },
+      {
+        "code": "H4",
+        "description": "Current/previous Director(s) and/or current/previous Secretary have been recorded as being directors of a company/or companies which have been struck off the Register of Companies as a result of either a subject company voluntary application or due to non compliance."
+      }
+    ],
+    "protectScore": 20,
+    "score": 28,
+    "scoreGrade": "E",
+    "scoreGradeSixMonthsAgo": "E",
+    "scoreGradeThreeMonthsAgo": "E",
+    "scoreName": {
+      "code": "S",
+      "description": "ScoreCheck"
+    },
+    "scoreSixMonthsAgo": 27,
+    "scoreThreeMonthsAgo": 27
+  },
+  "summary": {
+    "applicationState": "completed",
+    "created": "2019-10-22 10:04:34.149",
+    "decisionTime": "2019-10-22 10:04:35.499"
+  },
+  "termsRequestedMonths": 0,
+  "termsRequestedYears": 0,
+  "tieredOwnership": [
+    {
+      "shareholders": [
+        {
+          "forename": "SATINDERKAUR",
+          "percentageOfOrdinary": 100,
+          "shareholderType": {
+            "code": "P",
+            "description": "Individual"
+          },
+          "shares": [
+            {
+              "joint": false,
+              "numberOfShares": 100,
+              "totalValueOfShares": 100,
+              "typeOfShare": "ORD"
+            }
+          ],
+          "surname": "TAKHAR"
+        }
+      ],
+      "tierNumber": 0
+    }
+  ],
+  "transactionId": "787b5198-8911-47d7-ad78-3de6920669b2"
+}
